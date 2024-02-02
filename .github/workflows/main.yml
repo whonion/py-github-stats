@@ -50,5 +50,5 @@ jobs:
         git config --global user.email "root@whonion.app"
         git add .
         # Force the build to succeed, even if no files were changed
-        git commit -m --amend '🤖 Update generated files' || true
+        git commit -m "🤖 Update generated files" || true
         git push
