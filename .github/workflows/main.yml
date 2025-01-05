@@ -48,8 +48,6 @@ jobs:
       run: |
         git config --global user.name "whonion"
         git config --global user.email "root@whonion.app"
-        git fetch origin
-        git reset --hard origin/master
         git add .
         # Force the build to succeed, even if no files were changed
         git commit -m "🤖 Update generated files" || true
