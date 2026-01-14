@@ -1,13 +1,13 @@
-# [GitHub Stats Visualization](https://github.com/whonion/py-github-stats)
+# [GitHub Stats Visualization](https://github.com/whonion/ts-github-stats)
 
 <!--
 https://github.community/t/support-theme-context-for-images-in-light-vs-dark-mode/147981/84
 -->
-<a href="https://github.com/whonion/py-github-stats">
-<img src="https://github.com/whonion/py-github-stats/blob/master/generated/overview.svg#gh-dark-mode-only" />
-<img src="https://github.com/whonion/py-github-stats/blob/master/generated/languages.svg#gh-dark-mode-only" />
-<img src="https://github.com/whonion/py-github-stats/blob/master/generated/overview.svg#gh-light-mode-only" />
-<img src="https://github.com/whonion/py-github-stats/blob/master/generated/languages.svg#gh-light-mode-only" />
+<a href="https://github.com/whonion/ts-github-stats">
+<img src="https://github.com/whonion/ts-github-stats/blob/master/generated/overview.svg#gh-dark-mode-only" />
+<img src="https://github.com/whonion/ts-github-stats/blob/master/generated/languages.svg#gh-dark-mode-only" />
+<img src="https://github.com/whonion/ts-github-stats/blob/master/generated/overview.svg#gh-light-mode-only" />
+<img src="https://github.com/whonion/ts-github-stats/blob/master/generated/languages.svg#gh-light-mode-only" />
 </a>
 
 Generate visualizations of GitHub user and repository statistics with GitHub
@@ -41,11 +41,11 @@ service would be unable to access.
 
 If the project is used with an access token that has sufficient permissions to
 read private repositories, it may leak details about those repositories in
-error messages. For example, the `aiohttp` library—used for asynchronous API
-requests—may include the requested URL in exceptions, which can leak the name
-of private repositories. If there is an exception caused by `aiohttp`, this
-exception will be viewable in the Actions tab of the repository fork, and
-anyone may be able to see the name of one or more private repositories.
+error messages. For example, the `axios` library—used for HTTP requests—may
+include the requested URL in exceptions, which can leak the name of private
+repositories. If there is an exception caused by `axios`, this exception will
+be viewable in the Actions tab of the repository fork, and anyone may be able
+to see the name of one or more private repositories.
 
 Due to some issues with the GitHub statistics API, there are some situations
 where it returns inaccurate results. Specifically, the repository view count
@@ -64,6 +64,8 @@ For more information on inaccuracies, see issue
 
 <!-- TODO: Add details and screenshots -->
 
+This project is now written in TypeScript and uses Node.js instead of Python.
+
 1. Create a personal access token (not the default GitHub Actions token) using
    the instructions
    [here](https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token).
@@ -74,7 +76,7 @@ For more information on inaccuracies, see issue
      access token to work. For more, see 
      [#30](https://github.com/jstrieb/github-stats/issues/30).
 2. Create a copy of this repository by clicking
-   [here](https://github.com/whonion/py-github-stats/generate). Note: this is
+   [here](https://github.com/whonion/ts-github-stats/generate). Note: this is
    **not** the same as forking a copy because it copies everything fresh,
    without the huge commit history. 
 3. Go to the "Secrets" page of your copy of the repository. If this is the
@@ -86,20 +88,20 @@ For more information on inaccuracies, see issue
 5. It is possible to change the type of statistics reported by adding other
    repository secrets. 
    - To ignore certain repos, add them (in owner/name format e.g.,
-     `whonion/py-github-stats`) separated by commas to a new secret—created as
+     `whonion/ts-github-stats`) separated by commas to a new secret—created as
      before—called `EXCLUDED`.
    - To ignore certain languages, add them (separated by commas) to a new
      secret called `EXCLUDED_LANGS`. For example, to exclude HTML and TeX you
      could set the value to `html,tex`.
-   - To show statistics only for "owned" repositories and not forks with
+     - To show statistics only for "owned" repositories and not forks with
      contributions, add an environment variable (under the `env` header in the
      [main
-     workflow](https://github.com/whonion/py-github-stats/blob/master/.github/workflows/main.yml))
+     workflow](https://github.com/whonion/ts-github-stats/blob/master/.github/workflows/main.yml))
      called `EXCLUDE_FORKED_REPOS` with a value of `true`.
    - These other values are added as secrets by default to prevent leaking
      information about private repositories. If you're not worried about that,
      you can change the values directly [in the Actions workflow
-     itself](https://github.com/whonion/py-github-stats/blob/9cde73fd66d978863068aed026644cc794a51baa/.github/workflows/main.yml#L48-L53).
+     itself](https://github.com/whonion/ts-github-stats/blob/master/.github/workflows/main.yml).
 6. Go to the [Actions
    Page](../../actions?query=workflow%3A"Generate+Stats+Images") and press "Run
    Workflow" on the right side of the screen to generate images for the first

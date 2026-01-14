@@ -134,3 +134,17 @@ dmypy.json
 
 # PyCharm project files
 .idea
+
+# TypeScript
+*.tsbuildinfo
+dist/
+node_modules/
+.npm
+.eslintcache
+
+# Environment variables
+.env
+.env.local
+
+# Local test scripts
+test-local.ps1

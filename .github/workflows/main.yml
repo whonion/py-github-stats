@@ -18,24 +18,22 @@ jobs:
     # Check out repository under $GITHUB_WORKSPACE, so the job can access it
     - uses: actions/checkout@v4
 
-    # Run using Python 3.8 for consistency and aiohttp
-    - name: Set up Python 3.8
-      uses: actions/setup-python@v4
+    # Run using Node.js
+    - name: Set up Node.js
+      uses: actions/setup-node@v4
       with:
-        python-version: '3.8'
-        architecture: 'x64'
-        cache: 'pip'
+        node-version: '20'
+        cache: 'npm'
 
-    # Install dependencies with `pip`
+    # Install dependencies with `npm`
     - name: Install requirements
       run: |
-        python3 -m pip install --upgrade pip setuptools wheel
-        python3 -m pip install -r requirements.txt
+        npm ci
 
     # Generate all statistics images
     - name: Generate images
       run: |
-        python3 generate_images.py
+        npm start
       env:
         ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -50,5 +48,5 @@ jobs:
         git config --global user.email "root@whonion.app"
         git add .
         # Force the build to succeed, even if no files were changed
-        git commit -m --amend '🤖 Update generated files' || true
+        git commit -m "🤖 Update generated files" || true
         git push

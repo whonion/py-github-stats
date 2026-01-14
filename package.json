@@ -1,0 +1,32 @@
+{
+  "name": "github-stats",
+  "version": "1.0.0",
+  "description": "Generate visualizations of GitHub user and repository statistics",
+  "main": "src/main.ts",
+  "scripts": {
+    "build": "tsc",
+    "start": "tsx src/main.ts",
+    "dev": "tsx watch src/main.ts",
+    "lint": "eslint src --ext .ts",
+    "lint:fix": "eslint src --ext .ts --fix",
+    "lint:quiet": "eslint src --ext .ts --quiet"
+  },
+  "keywords": [
+    "github",
+    "stats",
+    "visualization"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^1.13.2"
+  },
+  "devDependencies": {
+    "@types/node": "^24.10.6",
+    "@typescript-eslint/eslint-plugin": "^6.15.0",
+    "@typescript-eslint/parser": "^6.15.0",
+    "eslint": "^8.56.0",
+    "tsx": "^4.21.0",
+    "typescript": "^5.3.3"
+  }
+}
